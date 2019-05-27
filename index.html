@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Modern Warfare 2 Word Guessing Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
-        <section>
+        <section id="wordBanksWrapper">
             <ul id="wordBanks">
                 <li id="weapons"><a href="#">Weapons</a></li>
                 <li id="perks"><a href="#">Perks</a></li>
@@ -21,12 +22,17 @@
 
 
     <section id="game-zone">
-        <div id="playNow"><h1>Play Now</h1></div>
-        <h2 id="imThinking">I'm thinking of a Weapon</h2>
+        <img id="mw2Logo" src="assets/images/MW2Logo.jpg">
+        <button id="playNow">Play Now</button>
+        <h1 id="imThinking">I'm thinking of a weapon!</h1>
         <p id="currentWord">Current Word:</p>
+        <p id="currentWordInput"></p>
         <p id="guessesRemaining">Number of guesses remaining:</p>
+        <p id="guessesRemainingInput"></p>
         <p id="lettersGuessed">Letters guessed:</p>
-        <p id="wins">Wins:</p>        
+        <p id="lettersGuessedInput"></p>
+        <p id="wins">Wins:</p>
+        <p id="winsInput"></p>   
     </section>
 </body>
 </html>

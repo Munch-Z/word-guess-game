@@ -21,10 +21,43 @@ ul {
     list-style: none;
 }
 
+#wordBanksWrapper {
+    max-width: 50%;
+    background-color: rgba(189, 189, 189, 1);
+    margin: 0 auto;
+}
+
 #wordBanks {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-width: 20%;
+    max-width: 100%;
     margin: 0 auto;
+}
+
+#wordBanks li {
+    font-size: 20px;
+}
+
+#game-zone {
+    margin: 0 auto;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    background-color: rgba(189, 189, 189, 1);
+}
+
+#mw2Logo {
+    width: 80%;
+    height: auto;
+}
+
+p, h1, button {
+    padding: 1em;
+}
+
+button {
+    font-size: 35px;
 }
