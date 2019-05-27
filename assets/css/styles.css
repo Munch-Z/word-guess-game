@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;  
+}
+
+html, body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: rgba(156, 156, 156, 1);  
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+#wordBanks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 20%;
+    margin: 0 auto;
+}
