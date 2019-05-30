@@ -66,7 +66,7 @@ function limitCheckbox(id, max, checkId) {
     var checkboxes = document.getElementById(id);
     for (i = 0; i < checkboxes.length; i += 1) {
         if (checkboxes[i].checked) {
-            count = count + 1;
+            count++;
 		}
 	}	 
     if (count > max) {
@@ -76,8 +76,8 @@ function limitCheckbox(id, max, checkId) {
     }
 }
 
-perkButtonHTML.checked = limitCheckbox('wordBanksHTML', 1, 'equipmentCheck');
-equipmentButtonHTML.checked = limitCheckbox('wordBanksHTML', 1, 'perksCheck');
+perkButtonHTML.onclick = limitCheckbox('wordBanksHTML', 1, 'equipmentCheck');
+equipmentButtonHTML.onclick = limitCheckbox('wordBanksHTML', 1, 'perksCheck');
 
 
 
