@@ -11,11 +11,12 @@
 <body>
     <header>
         <section id="wordBanksWrapper">
-            <ul id="wordBanks">
-                <li id="weapons"><a href="#">Weapons</a></li>
-                <li id="perks"><a href="#">Perks</a></li>
-                <li id="equipment"><a href="#">Equipment</a></li>
-            </ul>
+            <form id="wordBanksHTML">
+                <input type="checkbox" id="perksCheck" checked>
+                <label for="perksCheck">Perks</label>
+                <input type="checkbox" id="equipmentCheck">
+                <label for="equipmentCheck">Equipment</label>
+            </form>
         </section>
     </header>
 
@@ -32,7 +33,11 @@
         <p id="lettersGuessed">Letters guessed:</p>
         <p id="lettersGuessedInput"></p>
         <p id="wins">Wins:</p>
-        <p id="winsInput"></p>   
+        <p id="winsInput"></p>
+        <p id="losses">Losses:</p>
+        <p id="lossesInput"></p>   
     </section>
+
+    <script type="text/javascript" src="assets/javascript/game.js" defer></script>
 </body>
 </html>
