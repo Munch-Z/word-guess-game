@@ -27,7 +27,7 @@ ul {
     margin: 0 auto;
 }
 
-#wordBanks {
+#wordBanksHTML {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
