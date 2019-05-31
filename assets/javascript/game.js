@@ -66,28 +66,30 @@ if (document.getElementById("equipmentCheck").checked) {
         lettersGuessedHTML.textContent = guessedLetterBank;
 };
 
-playNowButtonHTML.onclick = newGame();
+playNowButtonHTML.addEventListener("click", newGame);
 
 // Only allows one checkbox to be clicked
 
 function limitCheckbox(id, max, checkId) {
+    console.log("I got here 1")
     var count = 0,
         i;
     var checkboxes = document.getElementById(id);
     for (i = 0; i < checkboxes.length; i += 1) {
+        console.log("I got here 2")
         if (checkboxes[i].checked) {
             count++;
 		}
 	}	 
     if (count > max) {
-        alert("Please select only one Word Bank.");
+        // alert("Please select only one Word Bank.");
         document.getElementById(checkId).checked = false;
         
     }
 };
 
-perksCheckHTML.onclick = limitCheckbox("wordBanksHTML", 1, "equipmentCheck");
-equipmentCheckHTML.onclick = limitCheckbox("wordBanksHTML", 1, "perksCheck");
+perksCheckHTML.addEventListener("click", () => limitCheckbox("wordBanksHTML", 1, "equipmentCheck"));
+equipmentCheckHTML.addEventListener("click", () => limitCheckbox("wordBanksHTML", 1, "perksCheck"));
 
 
 
