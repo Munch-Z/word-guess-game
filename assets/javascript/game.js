@@ -54,7 +54,7 @@ function newGame(){
 if (document.getElementById("equipmentCheck").checked) {
         pickedWord = getWords("Equipment");
             } else {
-                pickedWord = getWords("Perks");
+                pickedWord = "scavenger";
             }
         
         //create placeholder underscores for new word, excluding spaces
@@ -65,12 +65,10 @@ if (document.getElementById("equipmentCheck").checked) {
             pickedWordPlaceholder.push("_");
         }
     }
-        console.log("New Game Fired")
         guessesRemainingHTML.textContent = guessesLeft;
         blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
         lettersGuessedHTML.textContent = guessedLetterBank;
         incorrectLettersHTML.textContent = incorrectLetterBank;
-        console.log("Variables Reset")
 };
 
 playNowButtonHTML.addEventListener("click", () => (gameRunning) ? alert("Please guess the word, or run out of guesses to get a new word.") : newGame());
@@ -105,15 +103,9 @@ function userGuessed(letter) {
         lettersGuessedHTML.textContent = guessedLetterBank.join(" ");
     } else if (!gameRunning) {
             alert("Press Play Now to get started!");
-    } else {
     }
     //checks if the complete word is guessed, then array to see if letter matches at any index, if not pushed to incorrect letter bank
-    if (pickedWord === pickedWordPlaceholder.join("")) {
-        alert("You won!");
-        wins++;
-        winsHTML.textContent = wins;
-        newGame();
-    } else if (pickedWord.indexOf(letter) === -1) {
+    if (pickedWord.indexOf(letter) === -1) {
         incorrectLetterBank.push(letter);
         incorrectLettersHTML.textContent = incorrectLetterBank.join(" ");
         guessesLeft--;
@@ -124,18 +116,21 @@ function userGuessed(letter) {
                 lossesHTML.textContent = losses;
                 newGame();
             }
-                else {
-                } 
     } else { //iterates through picked word to see if the letter is in it and replaces it
         for (let i=0; i < pickedWord.length; i++) {
             if (pickedWord[i] === letter.toLowerCase()) {
                     pickedWordPlaceholder[i] = letter;
                     blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
-            } else {
+                };
+            }
         }
-    }
+    
+    if (pickedWord === pickedWordPlaceholder.join("")) {
+    alert("You won!");
+    wins++;
+    winsHTML.textContent = wins;
+    newGame(); 
 }
-
 
 };
 
