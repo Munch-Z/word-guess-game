@@ -121,16 +121,18 @@ function userGuessed(letter) {
             if (pickedWord[i] === letter.toLowerCase()) {
                     pickedWordPlaceholder[i] = letter;
                     blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
+                    console.log(pickedWord + '---' + pickedWordPlaceholder.join(' '));
                 };
             }
         }
     
-    if (pickedWord === pickedWordPlaceholder.join("")) {
-    alert("You won!");
-    wins++;
-    winsHTML.textContent = wins;
-    newGame(); 
-}
+        setTimeout(() => { if (pickedWord === pickedWordPlaceholder.join("")) {
+        alert('You won!');
+        wins++;
+        winsHTML.textContent = wins;
+        newGame(); 
+    }}, 100);
+
 
 };
 
