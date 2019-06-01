@@ -60,18 +60,20 @@ if (document.getElementById("equipmentCheck").checked) {
         //create placeholder underscores for new word, excluding spaces
         for (let i=0; i < pickedWord.length; i++) {
             if (pickedWord[i] === ' ') {
-                pickedWordPlaceholder.push("\xa0\xa0\xa0");
+                pickedWordPlaceholder.push("\xa0");
             } else {
             pickedWordPlaceholder.push("_");
         }
     }
-
+        console.log("New Game Fired")
         guessesRemainingHTML.textContent = guessesLeft;
         blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
         lettersGuessedHTML.textContent = guessedLetterBank;
+        incorrectLettersHTML.textContent = incorrectLetterBank;
+        console.log("Variables Reset")
 };
 
-playNowButtonHTML.addEventListener("click", () => (gameRunning == true) ? alert("Please guess the word, or run out of guesses to get a new word.") : newGame());
+playNowButtonHTML.addEventListener("click", () => (gameRunning) ? alert("Please guess the word, or run out of guesses to get a new word.") : newGame());
 
 // Only allows one checkbox to be clicked
 
@@ -93,33 +95,51 @@ function limitCheckbox(id, max, checkId) {
 perksCheckHTML.addEventListener("click", () => limitCheckbox("wordBanksHTML", 1, "equipmentCheck"));
 equipmentCheckHTML.addEventListener("click", () => limitCheckbox("wordBanksHTML", 1, "perksCheck"));
 
-function userGuessed (letter) {
 
-   //checks if game is running, and if letter has been guessed 
-   if (gameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
+
+function userGuessed(letter) {
+    
+    //pushes letter to guess letter bank if it isn't there already
+    if (gameRunning && guessedLetterBank.indexOf(letter) === -1) {
         guessedLetterBank.push(letter);
-
-            //converts letter to lowercase and pushes if it matches any part of pickedWord
+        lettersGuessedHTML.textContent = guessedLetterBank.join(" ");
+    } else if (!gameRunning) {
+            alert("Press Play Now to get started!");
+    } else {
+    }
+    //checks if the complete word is guessed, then array to see if letter matches at any index, if not pushed to incorrect letter bank
+    if (pickedWord === pickedWordPlaceholder.join("")) {
+        alert("You won!");
+        wins++;
+        winsHTML.textContent = wins;
+        newGame();
+    } else if (pickedWord.indexOf(letter) === -1) {
+        incorrectLetterBank.push(letter);
+        incorrectLettersHTML.textContent = incorrectLetterBank.join(" ");
+        guessesLeft--;
+        guessesRemainingHTML.textContent = guessesLeft;
+            if  (guessesLeft <= 0) {
+                alert("You lost!")
+                losses++;
+                lossesHTML.textContent = losses;
+                newGame();
+            }
+                else {
+                } 
+    } else { //iterates through picked word to see if the letter is in it and replaces it
         for (let i=0; i < pickedWord.length; i++) {
-           if (pickedWord[i] === letter.toLowerCase()) {
-               pickedWordPlaceholder[i] = letter;
-               blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
-           } else if (pickedWord[i] !== letter.toLowerCase()) {
-            incorrectLettersHTML.textContent =  incorrectLetterBank.push(letter);
-           } else {
-               return;
-           }
+            if (pickedWord[i] === letter.toLowerCase()) {
+                    pickedWordPlaceholder[i] = letter;
+                    blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
+            } else {
         }
-   }  else if (gameRunning === false) {
-    alert("Click Play Now to start a new game.")
-} else {
-    return;
-}
+    }
 }
 
 
-// onkeyup event triggers userGuessed
+};
 
+// onkeydown event triggers userGuessed
 document.onkeydown = function (event) {
 
     if (event.keyCode > 64 && event.keyCode < 91) {
