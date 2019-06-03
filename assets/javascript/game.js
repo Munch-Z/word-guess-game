@@ -144,9 +144,6 @@ function userGuessed(letter) {
 // onkeydown event triggers userGuessed
 document.onkeydown = function (event) {
 
-    if (event.keyCode > 64 && event.keyCode < 91) {
+    if (gameRunning && event.keyCode > 64 && event.keyCode < 91) {
         userGuessed(event.key);
-    } else {
-        
-    }
-}
+}};
