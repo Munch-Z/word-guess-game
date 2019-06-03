@@ -54,7 +54,7 @@ function newGame(){
 if (document.getElementById("equipmentCheck").checked) {
         pickedWord = getWords("Equipment");
             } else {
-                pickedWord = "scavenger";
+                pickedWord = "sleight of hand";
             }
         
         //create placeholder underscores for new word, excluding spaces
@@ -110,23 +110,22 @@ function userGuessed(letter) {
         incorrectLettersHTML.textContent = incorrectLetterBank.join(" ");
         guessesLeft--;
         guessesRemainingHTML.textContent = guessesLeft;
-            if  (guessesLeft <= 0) {
+            setTimeout(() => {if  (guessesLeft <= 0) {
                 alert("You lost!")
                 losses++;
                 lossesHTML.textContent = losses;
                 newGame();
-            }
+            }}, 100);
     } else { //iterates through picked word to see if the letter is in it and replaces it
         for (let i=0; i < pickedWord.length; i++) {
             if (pickedWord[i] === letter.toLowerCase()) {
                     pickedWordPlaceholder[i] = letter;
-                    blankWordsHTML.textContent = pickedWordPlaceholder.join(" ");
-                    console.log(pickedWord + '---' + pickedWordPlaceholder.join(' '));
+                    blankWordsHTML.textContent = pickedWordPlaceholder.join("");
                 };
             }
         }
     
-        setTimeout(() => { if (pickedWord === pickedWordPlaceholder.join("")) {
+        setTimeout(() => { if (pickedWord === pickedWordPlaceholder.join('').replace(/\xa0/g, '\u0020')) {
         alert('You won!');
         wins++;
         winsHTML.textContent = wins;
