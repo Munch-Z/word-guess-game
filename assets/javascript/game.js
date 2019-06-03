@@ -54,7 +54,7 @@ function newGame(){
 if (document.getElementById("equipmentCheck").checked) {
         pickedWord = getWords("Equipment");
             } else {
-                pickedWord = "sleight of hand";
+                pickedWord = getWords("Perks");
             }
         
         //create placeholder underscores for new word, excluding spaces
