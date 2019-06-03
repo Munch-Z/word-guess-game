@@ -107,13 +107,13 @@ function userGuessed(letter) {
             alert("Press Play Now to get started!");
     }
     //checks if the complete word is guessed, then array to see if letter matches at any index, if not pushed to incorrect letter bank
-    if (pickedWord.indexOf(letter) === -1) {
+    if (pickedWord.indexOf(letter) === -1 && incorrectLetterBank.indexOf(letter) === -1) {
         incorrectLetterBank.push(letter);
         incorrectLettersHTML.textContent = incorrectLetterBank.join(" ");
         guessesLeft--;
         guessesRemainingHTML.textContent = guessesLeft;
             setTimeout(() => {if  (guessesLeft <= 0) {
-                alert("You lost!")
+                alert("You lost! The correct word was: " + pickedWord)
                 losses++;
                 lossesHTML.textContent = losses;
                 newGame();
