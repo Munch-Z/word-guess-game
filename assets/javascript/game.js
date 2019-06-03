@@ -53,8 +53,10 @@ function newGame(){
 
 if (document.getElementById("equipmentCheck").checked) {
         pickedWord = getWords("Equipment");
+        document.getElementById("imThinking").innerHTML = "I'm thinking of a pice of Equipment!";
             } else {
                 pickedWord = getWords("Perks");
+                document.getElementById("imThinking").innerHTML = "I'm thinking of a Perk!";
             }
         
         //create placeholder underscores for new word, excluding spaces
