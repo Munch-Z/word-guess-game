@@ -88,6 +88,10 @@ function limitCheckbox(id, max, checkId) {
     if (count > max) {
         // alert("Please select only one Word Bank.");
         document.getElementById(checkId).checked = false;
+        if (gameRunning) {
+            newGame();
+        }
+        
         
     }
 };
